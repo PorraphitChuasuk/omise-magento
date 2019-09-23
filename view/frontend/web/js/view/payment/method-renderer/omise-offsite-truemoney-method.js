@@ -5,10 +5,9 @@ define(
         'mage/storage',
         'Magento_Checkout/js/view/payment/default',
         'Magento_Checkout/js/model/full-screen-loader',
-        'Magento_Checkout/js/action/redirect-on-success',
         'Magento_Checkout/js/model/quote',
         'Magento_Checkout/js/model/url-builder',
-        'Magento_Checkout/js/model/error-processor'
+        'Magento_Checkout/js/model/error-processor',
     ],
     function (
         $,
@@ -16,7 +15,6 @@ define(
         storage,
         Component,
         fullScreenLoader,
-        redirectOnSuccessAction,
         quote,
         urlBuilder,
         errorProcessor
@@ -25,7 +23,7 @@ define(
 
         return Component.extend({
             defaults: {
-                template: 'Omise_Payment/payment/offsite-alipay-form'
+                template: 'Omise_Payment/payment/offsite-truemoney-form'
             },
 
             isPlaceOrderActionAllowed: ko.observable(quote.billingAddress() != null),
@@ -36,7 +34,34 @@ define(
              * @return {string}
              */
             getCode: function () {
-                return 'omise_offsite_alipay';
+                return 'omise_offsite_truemoney';
+            },
+
+            /**
+             * Initiate observable fields
+             *
+             * @return this
+             */
+            initObservable: function () {
+                this._super()
+                    .observe([
+                        'trueMoneyPhoneNumber'
+                    ]);
+                return this;
+            },
+
+            /**
+             * Get a checkout form data
+             *
+             * @return {Object}
+             */
+            getData: function () {
+                return {
+                    'method': this.item.method,
+                    'additional_data': {
+                        'truemoney_phone_number': this.trueMoneyPhoneNumber() && this.trueMoneyPhoneNumber() !== '' ? this.trueMoneyPhoneNumber() : quote.billingAddress().telephone,
+                    }
+                };
             },
 
             /**
@@ -46,6 +71,15 @@ define(
              */
             getOrderCurrency: function () {
                 return window.checkoutConfig.quoteData.quote_currency_code;
+            },
+
+            /**
+             * Get customer phone number saved in profile
+             *
+             * @return {string}
+             */
+            getCustomerSavedPhoneNumber: function () {
+                return quote.billingAddress().telephone;
             },
 
             /**
@@ -63,7 +97,7 @@ define(
              * @return {boolean}
              */
             isActive: function () {
-                return this.getOrderCurrency().toLowerCase() === 'thb' && this.getStoreCurrency().toLowerCase() === 'thb';;
+                return this.getOrderCurrency().toLowerCase() === 'thb' && this.getStoreCurrency().toLowerCase() === 'thb';
             },
 
             /**

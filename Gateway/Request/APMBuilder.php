@@ -8,8 +8,10 @@ use Omise\Payment\Model\Config\Alipay;
 use Omise\Payment\Model\Config\Installment;
 use Omise\Payment\Model\Config\Internetbanking;
 use Omise\Payment\Model\Config\Tesco;
+use Omise\Payment\Model\Config\Truemoney;
 use Omise\Payment\Observer\InstallmentDataAssignObserver;
 use Omise\Payment\Observer\InternetbankingDataAssignObserver;
+use Omise\Payment\Observer\TruemoneyDataAssignObserver;
 
 class APMBuilder implements BuilderInterface
 {
@@ -28,6 +30,11 @@ class APMBuilder implements BuilderInterface
      * @var string
      */
     const SOURCE_INSTALLMENT_TERMS = 'installment_terms';
+
+    /**
+     * @var string
+     */
+    const SOURCE_PHONE_NUMBER = 'phone_number';
 
     /**
      * @var string
@@ -80,6 +87,12 @@ class APMBuilder implements BuilderInterface
                 $paymentInfo[self::SOURCE] = [
                     self::SOURCE_TYPE              => $method->getAdditionalInformation(InstallmentDataAssignObserver::OFFSITE),
                     self::SOURCE_INSTALLMENT_TERMS => $method->getAdditionalInformation(InstallmentDataAssignObserver::TERMS),
+                ];
+                break;
+            case Truemoney::CODE:
+                $paymentInfo[self::SOURCE] = [
+                    self::SOURCE_TYPE         => 'truemoney',
+                    self::SOURCE_PHONE_NUMBER => $method->getAdditionalInformation(TruemoneyDataAssignObserver::PHONE_NUMBER),
                 ];
                 break;
         }
