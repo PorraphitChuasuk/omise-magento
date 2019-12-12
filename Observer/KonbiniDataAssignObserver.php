@@ -5,7 +5,7 @@ use Magento\Framework\Event\Observer;
 use Magento\Payment\Observer\AbstractDataAssignObserver;
 use Magento\Quote\Api\Data\PaymentInterface;
 
-class ConveniencestoreDataAssignObserver extends AbstractDataAssignObserver
+class KonbiniDataAssignObserver extends AbstractDataAssignObserver
 {
     /**
      * @var string
