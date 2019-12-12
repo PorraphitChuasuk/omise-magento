@@ -169,35 +169,35 @@
     <!-- /Value Handler -->
 
     <!--  Convenience Store payment solution-->
-    <virtualType name="OmiseConveniencestoreAdapter" type="Magento\Payment\Model\Method\Adapter">
+    <virtualType name="OmiseKonbiniAdapter" type="Magento\Payment\Model\Method\Adapter">
         <arguments>
-            <argument name="code" xsi:type="const">Omise\Payment\Model\Config\Conveniencestore::CODE</argument>
+            <argument name="code" xsi:type="const">Omise\Payment\Model\Config\Konbini::CODE</argument>
             <argument name="formBlockType" xsi:type="string">Magento\Payment\Block\Form</argument>
             <argument name="infoBlockType" xsi:type="string">Magento\Payment\Block\Info</argument>
-            <argument name="valueHandlerPool" xsi:type="object">OmiseAPMConveniencestoreValueHandlerPool</argument>
+            <argument name="valueHandlerPool" xsi:type="object">OmiseAPMKonbiniValueHandlerPool</argument>
             <argument name="validatorPool" xsi:type="object">OmiseValidatorPool</argument>
             <argument name="commandPool" xsi:type="object">OmiseAPMCommandPool</argument>
         </arguments>
     </virtualType>
 
     <!-- Convenience Store :: Value Handler Pool -->
-    <virtualType name="OmiseAPMConveniencestoreValueHandlerPool" type="Magento\Payment\Gateway\Config\ValueHandlerPool">
+    <virtualType name="OmiseAPMKonbiniValueHandlerPool" type="Magento\Payment\Gateway\Config\ValueHandlerPool">
         <arguments>
             <argument name="handlers" xsi:type="array">
-                <item name="default" xsi:type="string">OmiseAPMConveniencestoreConfigValueHandler</item>
+                <item name="default" xsi:type="string">OmiseAPMKonbiniConfigValueHandler</item>
             </argument>
         </arguments>
     </virtualType>
     
-    <virtualType name="OmiseAPMConveniencestoreConfigValueHandler" type="Magento\Payment\Gateway\Config\ConfigValueHandler">
+    <virtualType name="OmiseAPMKonbiniConfigValueHandler" type="Magento\Payment\Gateway\Config\ConfigValueHandler">
         <arguments>
-            <argument name="configInterface" xsi:type="object">OmiseAPMConveniencestoreConfig</argument>
+            <argument name="configInterface" xsi:type="object">OmiseAPMKonbiniConfig</argument>
         </arguments>
     </virtualType>
 
-    <virtualType name="OmiseAPMConveniencestoreConfig" type="Magento\Payment\Gateway\Config\Config">
+    <virtualType name="OmiseAPMKonbiniConfig" type="Magento\Payment\Gateway\Config\Config">
         <arguments>
-            <argument name="methodCode" xsi:type="const">Omise\Payment\Model\Config\Conveniencestore::CODE</argument>
+            <argument name="methodCode" xsi:type="const">Omise\Payment\Model\Config\Konbini::CODE</argument>
         </arguments>
     </virtualType>
     <!-- /Value Handler -->

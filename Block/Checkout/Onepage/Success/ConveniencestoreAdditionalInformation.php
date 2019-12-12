@@ -1,7 +1,7 @@
 <?php
 namespace Omise\Payment\Block\Checkout\Onepage\Success;
 
-class ConveniencestoreAdditionalInformation extends \Magento\Framework\View\Element\Template
+class KonbiniAdditionalInformation extends \Magento\Framework\View\Element\Template
 {
     /**
      * @var \Magento\Checkout\Model\Session
