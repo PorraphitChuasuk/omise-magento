@@ -60,9 +60,9 @@ define(
                 return {
                     'method': this.item.method,
                     'additional_data': {
-                        'conv_store_phone_number': this.convenienceStorePhoneNumber(),
-                        'conv_store_email': this.convenienceStoreEmail(),
-                        'conv_store_customer_name': this.convenienceStoreCustomersName()
+                        'konbini_phone_number': this.convenienceStorePhoneNumber(),
+                        'konbini_email': this.convenienceStoreEmail(),
+                        'konbini_customer_name': this.convenienceStoreCustomersName()
                     }
                 };
             },

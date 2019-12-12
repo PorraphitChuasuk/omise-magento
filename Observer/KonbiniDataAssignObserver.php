@@ -10,9 +10,9 @@ class KonbiniDataAssignObserver extends AbstractDataAssignObserver
     /**
      * @var string
      */
-    const PHONE_NUMBER  = 'conv_store_phone_number';
-    const EMAIL         = 'conv_store_email';
-    const CUSTOMER_NAME = 'conv_store_customer_name';
+    const PHONE_NUMBER  = 'konbini_phone_number';
+    const EMAIL         = 'konbini_email';
+    const CUSTOMER_NAME = 'konbini_customer_name';
 
     /**
      * @var array
