@@ -168,7 +168,7 @@
     </virtualType>
     <!-- /Value Handler -->
 
-    <!--  Convenience Store payment solution-->
+    <!--  Konbini payment solution-->
     <virtualType name="OmiseKonbiniAdapter" type="Magento\Payment\Model\Method\Adapter">
         <arguments>
             <argument name="code" xsi:type="const">Omise\Payment\Model\Config\Konbini::CODE</argument>
@@ -180,7 +180,7 @@
         </arguments>
     </virtualType>
 
-    <!-- Convenience Store :: Value Handler Pool -->
+    <!-- Konbini :: Value Handler Pool -->
     <virtualType name="OmiseAPMKonbiniValueHandlerPool" type="Magento\Payment\Gateway\Config\ValueHandlerPool">
         <arguments>
             <argument name="handlers" xsi:type="array">
