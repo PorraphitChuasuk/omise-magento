@@ -15,7 +15,8 @@ define(
             'offsite-alipay',
             'offsite-installment',
             'offsite-truemoney',
-            'offline-tesco'
+            'offline-tesco',
+            'offline-konbini'
         ];
 
         METHOD_RENDERERS.forEach(rendererName => {
@@ -24,13 +25,6 @@ define(
                 component: 'Omise_Payment/js/view/payment/method-renderer/omise-' + rendererName + '-method'
             });  
         });
-
-        rendererList.push(
-            {
-                type: 'omise_offline_conveniencestore',
-                component: 'Omise_Payment/js/view/payment/method-renderer/omise-offline-conveniencestore-method'
-            }
-        );
 
         return Component.extend({});
     }

@@ -28,7 +28,7 @@ define(
 
         return Component.extend({
             defaults: {
-                template: 'Omise_Payment/payment/offline-conveniencestore-form'
+                template: 'Omise_Payment/payment/offline-konbini-form'
             },
 
             isPlaceOrderActionAllowed: ko.observable(quote.billingAddress() != null),
